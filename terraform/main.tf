@@ -1,5 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  # Dynamisches Naming mit Environment
   name     = "${var.rg_name}-${var.environment}"
   location = var.location
   tags     = var.tags
