@@ -1,0 +1,20 @@
+# Azure Region
+location = "westeurope"
+
+# Resource Group Name
+rg_name = "rg-network-hub-spoke-base"
+
+# Network Address Spaces (CIDR)
+hub_vnet_cidr    = ["10.0.0.0/16"]
+spoke1_vnet_cidr = ["10.1.0.0/16"]
+spoke2_vnet_cidr = ["10.2.0.0/16"]
+
+# Environment & Tagging
+environment = "dev"
+
+tags = {
+  Environment = "dev"
+  ManagedBy   = "Terraform"
+  Project     = "Hub-and-Spoke-Base"
+  Owner       = "Infrastructure Team"
+}
