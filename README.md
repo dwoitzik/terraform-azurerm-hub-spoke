@@ -97,7 +97,7 @@ The base architecture covers standard deployments. But in regulated environments
 
 Getting these right from scratch takes a senior engineer days, not hours.
 
-👉 **[Get the Enterprise Hub & Spoke Edition →](https://woitzik-cloud.lemonsqueezy.com)**  
+👉 **[Get the Enterprise Hub & Spoke Edition →](https://woitzik-cloud.lemonsqueezy.com/checkout/buy/e8caa68b-bc22-489e-b453-2ea28bd28eb0)**
 Includes full source for centralized Private Link DNS injection, DINE-policy bypass logic, and pre-hardened NSG rulesets. Audit-ready on day one.
 
 ---
