@@ -87,6 +87,14 @@ This template deliberately keeps scope minimal. The following are **not included
 
 ---
 
+## 📖 Deep Dive
+
+Read the full technical breakdown — Zero-Trust NSGs, DINE-policy bypass logic, and centralized Private DNS explained step by step:
+
+**[Enterprise Hub & Spoke with Zero-Trust NSGs and Private DNS →](https://woitzik.dev/blog/azure-terraform-hub-spoke-zero-trust)**
+
+---
+
 ## 🔒 Need Enterprise-Grade Security & DNS Integration?
 
 The base architecture covers standard deployments. But in regulated environments (ISO 27001, NIS2, KRITIS), you will quickly run into:
