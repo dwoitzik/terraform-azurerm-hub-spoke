@@ -1,5 +1,7 @@
 # Azure Hub & Spoke Network Architecture (Base Edition)
 
+[![CI](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml/badge.svg)](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml)
+
 A clean, production-ready Infrastructure as Code (IaC) template to deploy a standard Hub-and-Spoke network topology in Microsoft Azure using Terraform.
 
 This repository provides the foundational network components, establishing isolated Spoke VNets connected via bidirectional VNet peering to a central Hub — ready for workload deployment in minutes.
