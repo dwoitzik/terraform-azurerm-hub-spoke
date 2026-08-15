@@ -38,3 +38,13 @@ variable "tags" {
   description = "Standard tags to apply to all resources."
   default     = {}
 }
+
+variable "spoke1_subnet_cidr" {
+  type    = list(string)
+  default = ["10.1.1.0/24"]
+}
+
+variable "spoke2_subnet_cidr" {
+  type    = list(string)
+  default = ["10.2.1.0/24"]
+}

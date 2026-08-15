@@ -1,4 +1,4 @@
-# Azure Hub & Spoke Network Architecture (Base Edition)
+# Azure Hub & Spoke Network Architecture
 
 [![CI](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml/badge.svg)](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml)
 
@@ -25,6 +25,8 @@ This repository provides the foundational network components, establishing isola
 - **Isolated Spokes** — Two pre-configured Spoke VNets for workload segmentation
 - **Bidirectional Peering** — Automated Hub ↔ Spoke peerings with forwarded traffic enabled
 - **`allow_forwarded_traffic = true`** — Hub-routed traffic works out of the box
+- **Zero-Trust NSGs** — Pre-hardened, audit-ready subnet-level traffic controls on every spoke
+- **Centralized Private DNS Zones** — Cross-subnet Private Endpoint DNS resolution wired up out of the box, with a DINE-policy-safe `lifecycle.ignore_changes` block so Terraform state doesn't fight Azure Policy remediation
 - **Clean variable structure** — Customize via `terraform.tfvars` without touching core logic
 
 ## 🛠️ Prerequisites
@@ -72,19 +74,19 @@ terraform apply
 ```
 .
 ├── main.tf                  # VNets & peerings
+├── nsg.tf                   # Zero-Trust NSGs & spoke subnets
+├── dns.tf                   # Centralized Private DNS zones
 ├── variables.tf             # Input variable definitions
 ├── outputs.tf               # VNet IDs & names
 ├── terraform.tfvars.example # Example configuration
 └── README.md
 ```
 
-## ⚠️ Known Limitations (Base Edition)
+## ⚠️ Known Limitations
 
-This template deliberately keeps scope minimal. The following are **not included** and will require manual configuration or the Enterprise Edition:
+This template deliberately keeps scope minimal:
 
-- No NSGs — Spoke VNets are isolated from each other via peering, but no subnet-level traffic filtering is applied
-- No Azure Firewall — traffic between Spokes is not inspected
-- No centralized Private DNS Zones — Private Endpoint DNS resolution across Spokes requires additional configuration
+- No Azure Firewall — traffic between Spokes is not inspected (pair with [azure-firewall-forced-tunneling](https://github.com/dwoitzik/azure-firewall-forced-tunneling) for that)
 - `use_remote_gateways` is not set — VPN/ExpressRoute traffic will not route through a Hub Gateway by default
 
 ---
@@ -93,22 +95,9 @@ This template deliberately keeps scope minimal. The following are **not included
 
 Read the full technical breakdown — Zero-Trust NSGs, DINE-policy bypass logic, and centralized Private DNS explained step by step:
 
-**[Enterprise Hub & Spoke with Zero-Trust NSGs and Private DNS →](https://woitzik.dev/blog/azure-terraform-hub-spoke-zero-trust)**
+**[Hub & Spoke with Zero-Trust NSGs and Private DNS →](https://woitzik.dev/blog/azure-terraform-hub-spoke-zero-trust)**
 
----
-
-## 🔒 Need Enterprise-Grade Security & DNS Integration?
-
-The base architecture covers standard deployments. But in regulated environments (ISO 27001, NIS2, KRITIS), you will quickly run into:
-
-- **Centralized Private DNS Zones** — cross-subscription Private Endpoint DNS resolution conflicts with Azure Policy (`DeployIfNotExists`)
-- **DINE-policy bypass logic** — without it, Terraform state drifts constantly against Azure Policy remediation tasks
-- **Zero-Trust NSG rulesets** — pre-hardened, audit-ready subnet-level controls
-
-Getting these right from scratch takes a senior engineer days, not hours.
-
-👉 **[Get the Enterprise Hub & Spoke Edition →](https://woitzik-cloud.lemonsqueezy.com/checkout/buy/e8caa68b-bc22-489e-b453-2ea28bd28eb0)**
-Includes full source for centralized Private Link DNS injection, DINE-policy bypass logic, and pre-hardened NSG rulesets. Audit-ready on day one.
+Regulated environments (ISO 27001, NIS2, KRITIS) tend to hit the same three walls: centralized Private DNS zones fighting Azure Policy's `DeployIfNotExists` remediation, DINE-policy state drift, and subnet-level NSGs that actually hold up in an audit. All three are included here, not bolted on separately.
 
 ---
 
