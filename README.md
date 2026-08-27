@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml/badge.svg)](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml)
 
+> **Status: v0.1.0 — pre-1.0.** CI runs `terraform fmt`, `validate`, and `tflint` on every push, but this has never been through `terraform plan`/`apply` against a real Azure subscription. That proves syntax, not that it works. Reaching 1.0 needs a real plan-and-apply pass, which needs the operator (an Azure subscription, credentials, and someone watching the apply).
+
 A clean, production-ready Infrastructure as Code (IaC) template to deploy a standard Hub-and-Spoke network topology in Microsoft Azure using Terraform.
 
 This repository provides the foundational network components, establishing isolated Spoke VNets connected via bidirectional VNet peering to a central Hub — ready for workload deployment in minutes.
