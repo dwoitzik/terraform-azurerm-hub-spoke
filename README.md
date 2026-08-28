@@ -1,6 +1,6 @@
 # Azure Hub & Spoke Network Architecture
 
-[![CI](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml/badge.svg)](https://github.com/dwoitzik/azure-network-hub-spoke/actions/workflows/tf-linter.yml)
+[![CI](https://github.com/dwoitzik/terraform-azurerm-hub-spoke/actions/workflows/tf-linter.yml/badge.svg)](https://github.com/dwoitzik/terraform-azurerm-hub-spoke/actions/workflows/tf-linter.yml)
 
 > **Status: v0.1.0 — pre-1.0.** CI runs `terraform fmt`, `validate`, and `tflint` on every push, but this has never been through `terraform plan`/`apply` against a real Azure subscription. That proves syntax, not that it works. Reaching 1.0 needs a real plan-and-apply pass, which needs the operator (an Azure subscription, credentials, and someone watching the apply).
 
@@ -43,8 +43,8 @@ This repository provides the foundational network components, establishing isola
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/dwoitzik/azure-network-hub-spoke.git
-cd azure-network-hub-spoke
+git clone https://github.com/dwoitzik/terraform-azurerm-hub-spoke.git
+cd terraform-azurerm-hub-spoke
 ```
 
 **2. Configure your variables**
